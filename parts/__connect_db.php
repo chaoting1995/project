@@ -16,7 +16,7 @@ $pdo_options = [
 $pdo = new PDO($dsn, $db_user, $db_pass, $pdo_options);
 
 
-define('WEB_ROOT', '/little-proj');
+define('WEB_ROOT', '/project');
 
 if(!isset($_SESSION)){
     session_start();
