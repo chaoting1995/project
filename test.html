@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>demo</title>
+</head>
+
+<body>
+    <h1 id="total">0</h1>
+    <button id="add">+1</button>
+    <button id="minus">-1</button>
+
+    <script>
+        
+        function byId(id) {
+            return document.getElementById(id)
+        }
+
+        function clickHandler(button, value, total) {
+            alert(total.innerHTML);
+            button.addEventListener('click', function() {
+                total.innerHTML = +total.innerHTML + value
+            })
+        }
+
+        const addButton = byId('add')
+        const minusButton = byId('minus')
+        const total = byId('total')
+
+        clickHandler(addButton, 1, total)
+        clickHandler(minusButton, -1, total)
+    </script>
+</body>
+
+</html>

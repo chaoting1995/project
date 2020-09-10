@@ -77,8 +77,8 @@ $cates = $pdo->query($c_sql)->fetchAll();
                             $_POST['order_address'],
                              -->
 
-                                <input type="hidden" class="form-control" id="order_time" name="order_time" value="<?= htmlentities($row['order_time']) ?>">
-                            
+                            <input type="hidden" class="form-control" id="order_time" name="order_time" value="<?= htmlentities($row['order_time']) ?>">
+
                             <div class="form-group">
                                 <label for="order_price">訂單金額</label>
                                 <input type="text" class="form-control" id="order_price" name="order_price" value="<?= htmlentities($row['order_price']) ?>">
@@ -93,11 +93,9 @@ $cates = $pdo->query($c_sql)->fetchAll();
                                 <label for="take_time">取餐時間</label>
                                 <select class="form-control" id="take_time" name="take_time" value="<?= htmlentities($row['take_time']) ?>">
                                     <?php foreach ($cates as $c) : ?>
-                                        <option value="<?= $c['time_option'] ?>" <?= $row['take_time'] == $c['time_option'] ? 'selected' : ''  ?>><?= $c['time_option'] ?></option>
+                                        <option value=" <?= $c['time_option'] ?>" <?= $row['take_time'] == $c['time_option'] ? 'selected' : ''  ?>><?= $c['time_option'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
-
-
                             </div>
 
                             <div class="form-group">
@@ -173,12 +171,12 @@ $cates = $pdo->query($c_sql)->fetchAll();
                     if (obj.success) {
                         infobar.innerHTML = '修改成功';
                         infobar.className = "alert alert-success";
-                        
-                        setTimeout(()=>{
+
+                        setTimeout(() => {
                             location.href = 'order-manage.php';
                         }, 2000)
 
-                        
+
                     } else {
                         infobar.innerHTML = obj.error || '資料沒有修改';
                         infobar.className = "alert alert-danger";

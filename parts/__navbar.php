@@ -13,22 +13,34 @@ if (!isset($page_name)) $page_name = '';
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item <?= $page_name == 'shopping-cart' ? 'active' : '' ?>">
+                    <!-- 什麼狀況我要去顯示active? -->
+                    <!-- 當$page_name == 'data-list'，三元運算子，顯示active，否則顯示空字串 -->
+
+                    <a class="nav-link" href="<?= WEB_ROOT ?>/shopping-cart.php">購物車</a>
+                    <!-- 修改 -->
+                    <!-- WEB_ROOT，引入data-list.php-->
+                </li>
+
                 <li class="nav-item <?= $page_name == 'order-manage' ? 'active' : '' ?>">
-                <!-- 什麼狀況我要去顯示active? -->
-                <!-- 當$page_name == 'data-list'，三元運算子，顯示active，否則顯示空字串 -->
+                    <!-- 什麼狀況我要去顯示active? -->
+                    <!-- 當$page_name == 'data-list'，三元運算子，顯示active，否則顯示空字串 -->
 
                     <a class="nav-link" href="<?= WEB_ROOT ?>/order-manage.php">訂單管理</a>
                     <!-- 修改 -->
                     <!-- WEB_ROOT，引入data-list.php-->
                 </li>
+
                 <li class="nav-item <?= $page_name == 'order-insert' ? 'active' : '' ?>">
-                <!-- 什麼狀況我要去顯示active? -->
-                <!-- 當$page_name == 'data-insert'，三元運算子，顯示active，否則顯示空字串 -->
+                    <!-- 什麼狀況我要去顯示active? -->
+                    <!-- 當$page_name == 'data-insert'，三元運算子，顯示active，否則顯示空字串 -->
                     <a class="nav-link" href="<?= WEB_ROOT ?>/order-insert.php">新增訂單</a>
                     <!-- WEB_ROOT，引入data-insert.php"-->
                 </li>
 
             </ul>
+
             <ul class="navbar-nav">
                 <?php if (isset($_SESSION['admin'])) : ?>
                     <li class="nav-item">
@@ -50,7 +62,7 @@ if (!isset($page_name)) $page_name = '';
 </nav>
 <style>
     .navbar .nav-item.active {
-    /* <nav>裡面的<li> */
+        /* <nav>裡面的<li> */
         background-color: #7abaff;
         border-radius: 10px;
         /* 選取到的時候會變色 */

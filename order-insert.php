@@ -101,11 +101,6 @@ $cates = $pdo->query($c_sql)->fetchAll();
         </div>
     </div>
 
-
-
-
-
-
 </div>
 <?php include __DIR__ . '/parts/__scripts.php'; ?>
 <script>
