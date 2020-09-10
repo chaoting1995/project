@@ -11,25 +11,25 @@ $output = [
 ];
 
 // `sid`, `product_image`, `product_name`, `product_price`, `product_count`
-$sql = "UPDATE `shopping_cart` SET
-    `product_image`=?,
-    `product_name`=?,
-    `product_price`=?,
-    `product_count`=?
-    WHERE `sid`=?";
+// $sql = "UPDATE `shopping_cart` SET
+//     `product_image`=?,
+//     `product_name`=?,
+//     `product_price`=?,
+//     `product_count`=?
+//     WHERE `sid`=?";
 
-$stmt = $pdo->prepare($sql);
-$stmt->execute([
-    $_POST['product_image'],
-    $_POST['product_name'],
-    $_POST['product_price'],
-    $_POST['product_count'],
-    $_POST['sid'],
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([
+//     $_POST['product_image'],
+//     $_POST['product_name'],
+//     $_POST['product_price'],
+//     $_POST['product_count'],
+//     $_POST['sid'],
 
-]);
+// ]);
 
-if ($stmt->rowCount()) {
-    $output['success'] = true;
-}
+// if ($stmt->rowCount()) {
+//     $output['success'] = true;
+// }
 
 echo json_encode($output, JSON_UNESCAPED_UNICODE);

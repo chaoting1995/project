@@ -84,24 +84,25 @@ if ($totalRows > 0) {
         </thead>
         <tbody>
             <?php foreach ($rows as $r) : ?>
-                <tr>
-                    <form name="form1" onsubmit="checkForm(); return false;">
-                        <td><input type="hidden" id="sid" name="sid" value="<?= $row['sid'] ?>"><?= $r['sid'] ?></td>
+                <tr data-sid="<?= $r['sid'] ?>">
 
-                        <td><input type="hidden" id="product_image" name="product_image" value="<?= $row['product_image'] ?>"><img src="<?= htmlentities($r['product_image']) ?>" alt="" width="100px"></td>
+                    <td><input type="hidden" id="sid" name="sid" value="<?= $r['sid'] ?>"><?= $r['sid'] ?></td>
 
-                        <td><input type="hidden" id="product_name" name="product_name" value="<?= $row['product_name'] ?>"><?= $r['product_name'] ?></td>
+                    <td><input type="hidden" id="product_image" name="product_image" value="<?= $r['product_image'] ?>"><img src="<?= htmlentities($r['product_image']) ?>" alt="" width="100px"></td>
 
-                        <td><input type="hidden" id="product_price" name="product_price" value="<?= $row['product_price'] ?>"><?= $r['product_price'] ?></td>
+                    <td><input type="hidden" id="product_name" name="product_name" value="<?= $r['product_name'] ?>"><?= $r['product_name'] ?></td>
 
-                        <!-- 計數器 -->
-                        <td>
-                            <div class="form-group form-row">
-                                <input type="number" class="form-control col-3" id="product_count" name="product_count" value="<?= $r['product_count'] ?>">
-                                <button type="submit" class="btn btn-primary">送出
-                                </button>
-                            </div>
-                    </form>
+                    <td><input type="hidden" id="product_price" name="product_price" value="<?= $r['product_price'] ?>"><?= $r['product_price'] ?></td>
+
+                    <!-- 計數器 -->
+                    <td>
+                        <div class="form-group form-row">
+                            <input type="number" class="form-control col-3 quantity" value="<?= $r['product_count'] ?>">
+                            <button type="button" class="btn btn-primary" onclick="changeNum(event)">送出
+                            </button>
+                        </div>
+
+
                     </td>
                     <!-- <td><a href="#"><i class="fas fa-edit"></i></a></td> -->
                     <td>
@@ -137,26 +138,40 @@ if ($totalRows > 0) {
     //             ;} )
     // }
 
+    function checkForm(obj) {
 
-    function checkForm() {
-        let isPass = true;
-
-
-        const fd = new FormData(document.form1);
-
-        fetch('shopping-cart-api.php', {
-                method: 'POST',
-                body: fd
-            })
-            .then(r => r.json())
-            .then(obj => {});
+        console.log(obj.form1.value)
     }
+
+    // }ˇˇˇˇˇˇ
+    //     function checkForm() {
+    //         let isPass = true;
+
+
+    //         const fd = new FormData(document.form1);
+
+    //         fetch('shopping-cart-api.php', {
+    //                 method: 'POST',
+    //                 body: fd
+    //             })
+    //             .then(r => r.json())
+    //             .then(obj => {});
+    //     }
 
 
     function delete_it(sid) {
         if (confirm(`是否要刪除編號為 ${sid} 的資料???`)) {
             location.href = 'shopping-cart-delete.php?sid=' + sid;
         }
+    }
+
+    function changeNum(event) {
+        const b = event.target;
+        const tr = b.closest('tr')
+        const sid = tr.getAttribute('data-sid');
+        const qty = tr.querySelector('.quantity').value;
+
+        console.log({sid, qty});
     }
 </script>
 
